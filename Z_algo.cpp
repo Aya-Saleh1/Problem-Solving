@@ -1,5 +1,5 @@
  void solve() {
-        auto  z_dunction = [&] (string s ) -> vector<int> {
+        auto  z_function = [&] (string s ) -> vector<int> {
             int l = 0 , r = 0 ;
             int n = s.length() ;
             vector<int> z(n);
