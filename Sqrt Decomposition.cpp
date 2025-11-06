@@ -69,3 +69,58 @@ int main() {
         }
     }
 }
+// for queries and uodate on dynamic range queries 
+/////
+const int N = 5e5 + 1 ;
+vector<vector<int>> x;
+vector<int> blk;
+void solve() {
+    int n, q;
+    cin >> n >> q;
+    vector<int> v(n);
+    int sz = sqrt(n) + 1 ;
+    x = vector<vector<int>>(sz + 1 );
+    blk = vector<int> (sz + 1 );
+    for (int i = 0; i < n; i++)cin >> v[i];
+ auto build = [&]() {
+     for (int i = 0 ; i < n ; i++){
+         x[i / sz].push_back(v[i]);
+         blk[i / sz ] += v[i];
+     }
+ };
+     auto query = [&](int l , int r )-> int {
+         int ans = 0 ;
+         while (l <= r ) {
+             if (l % sz == 0 && l + sz - 1 <= r ) {
+                 ans += blk[l / sz];
+                 l+= sz;
+             }else {
+             ans += v[l];
+                 l++;
+             }
+         }
+         return ans ;
+     };
+    auto update  = [&](int val , int pos) {
+        blk[pos / sz ] -= v[pos];
+        blk[pos / sz] += val ;
+        v[pos] = val ;
+        x[pos / sz][pos % sz] = val ;
+    };
+    build();
+    while (q--) {
+        int op;
+        cin >> op;
+        if (op == 1) {
+            int pos, val;
+            cin >> pos >> val;
+          update(val , --pos);
+        } else {
+            int l, r;
+            cin >> l >> r;
+            --l, --r;
+            cout << query(l , r ) << '\n';
+        }
+    }
+}
+//////
