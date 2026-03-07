@@ -1,3 +1,4 @@
+// o(n * m ) 
 string multiply(string a, string b) {
     int n = a.size();
     int m = b.size();
@@ -51,7 +52,7 @@ string subtractStrings(string a, string b){
     reverse(res.begin(),res.end());
     return res;
 }
-
+// o(n * m) 
 string division(string a,string b){
     string cur="";
     string ans="";
