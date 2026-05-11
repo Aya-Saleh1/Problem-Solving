@@ -29,7 +29,7 @@ void update(int idx, int v) //dynamic
 int query(int l, int r, int v) {
     int ans = 0;
     while (l <= r) {
-        if (l % SQ == 0 && l + SQ <= r) //block
+        if (l % SQ == 0 && l + SQ - 1  <= r) //block
         {
             ans += x[l / SQ].end() - lower_bound(x[l / SQ].begin(), x[l / SQ].end(), v);  //update
             l += SQ;
