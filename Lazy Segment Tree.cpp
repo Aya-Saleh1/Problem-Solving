@@ -115,17 +115,3 @@ void solve() {
     cout << ans << endl;
 }
 
-int32_t main() {
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
-    // cout << fixed << setprecision(7);
-
-    int TESTCASES = 1;
-    cin >> TESTCASES;
-    while (TESTCASES--) solve();
- 
-    return 0;
-}
